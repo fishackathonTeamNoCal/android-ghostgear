@@ -1,25 +1,28 @@
 package com.fishhackathon.ghostgear.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.fishhackathon.ghostgear.R;
 import com.fishhackathon.ghostgear.adapter.ReportPagerAdapter;
+import com.fishhackathon.ghostgear.views.CameraView;
 import com.viewpagerindicator.CirclePageIndicator;
 
 public class ReportActivity extends AppCompatActivity {
+    ReportPagerAdapter mPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
 
-        PagerAdapter mPagerActivity = new ReportPagerAdapter(this);
+        mPager = new ReportPagerAdapter(this);
         ViewPager vpViewPager = (ViewPager)findViewById(R.id.vpPager);
-        vpViewPager.setAdapter(new ReportPagerAdapter(this));
+        vpViewPager.setAdapter(mPager);
 
         CirclePageIndicator circlePageIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
         circlePageIndicator.setViewPager(vpViewPager);
@@ -32,4 +35,18 @@ public class ReportActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CameraView.CAPTURE_BIG_NET_IMAGE_ACTIVITY_REQUEST_CODE ||
+                requestCode == CameraView.CAPTURE_SMALL_NET_IMAGE_ACTIVITY_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                CameraView v = (CameraView) mPager.views.get(0);
+                v.setImage(requestCode);
+            } else { // Result was a failure
+                Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 }
