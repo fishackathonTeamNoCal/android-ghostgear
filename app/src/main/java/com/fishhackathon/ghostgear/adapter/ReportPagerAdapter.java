@@ -7,11 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.fishhackathon.ghostgear.views.AnimalsEndangered;
+import com.fishhackathon.ghostgear.views.CameraView;
 import com.fishhackathon.ghostgear.views.MeshSize;
 import com.fishhackathon.ghostgear.views.NetColor;
-import com.fishhackathon.ghostgear.views.NumOfStrands;
 import com.fishhackathon.ghostgear.views.OtherNotes;
 import com.fishhackathon.ghostgear.views.TwineDiameter;
+
+import java.util.ArrayList;
 
 /**
  * Created by gemma on 4/23/16.
@@ -21,39 +23,25 @@ import com.fishhackathon.ghostgear.views.TwineDiameter;
 public class ReportPagerAdapter extends PagerAdapter {
 
     private Context context;
+    public ArrayList<View> views;
 
     public ReportPagerAdapter(Context context) {
         super();
         this.context = context;
+        views = new ArrayList<View>();
+        views.add(new CameraView(context));
+        views.add(new MeshSize(context));
+        views.add(new TwineDiameter(context));
+        views.add(new NetColor(context));
+        views.add(new AnimalsEndangered(context));
+        views.add(new OtherNotes(context));
     }
 
 
     @Override
     public Object instantiateItem(ViewGroup collection, int position) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = null;
-        switch (position){
-            case 0:
-                view = new MeshSize(context);
-                break;
-            case 1:
-                view = new NumOfStrands(context);
-                break;
-            case 2:
-                view = new TwineDiameter(context);
-                break;
-            case 3:
-                view = new NetColor(context);
-                break;
-            case 4:
-                view = new AnimalsEndangered(context);
-                break;
-            case 5:
-                view = new OtherNotes(context);
-                break;
-
-        }
-
+        View view = views.get(position);
         collection.addView(view);
         return view;
     }

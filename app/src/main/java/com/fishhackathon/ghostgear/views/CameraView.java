@@ -3,10 +3,13 @@ package com.fishhackathon.ghostgear.views;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -47,6 +50,36 @@ public class CameraView extends RelativeLayout {
 
         inflate(getContext(), R.layout.view_camera, this);
         ButterKnife.bind(this);
+        bvTakeBigPicture.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onLaunchCamera(bigPhotoFileName, CAPTURE_BIG_NET_IMAGE_ACTIVITY_REQUEST_CODE);
+            }
+        });
+
+        bvTakeSmallPicture.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onLaunchCamera(smallPhotoFileName, CAPTURE_SMALL_NET_IMAGE_ACTIVITY_REQUEST_CODE);
+            }
+        });
+    }
+
+    public void setImage(int code) {
+        String photoName;
+        ImageView ivPreview;
+        if (code == CAPTURE_BIG_NET_IMAGE_ACTIVITY_REQUEST_CODE) {
+            photoName = bigPhotoFileName;
+            ivPreview = ivBigPicture;
+        } else {
+            photoName = smallPhotoFileName;
+            ivPreview = ivSmallPicture;
+        }
+        Uri takenPhotoUri = getPhotoFileUri(photoName);
+        // by this point we have the camera photo on disk
+        Bitmap takenImage = BitmapFactory.decodeFile(takenPhotoUri.getPath());
+        // Load the taken image into a preview
+        ivPreview.setImageBitmap(takenImage);
     }
 
     public void onLaunchCamera(String photoFileName, int code) {
