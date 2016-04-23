@@ -8,6 +8,7 @@ import android.view.Menu;
 
 import com.fishhackathon.ghostgear.R;
 import com.fishhackathon.ghostgear.adapter.ReportPagerAdapter;
+import com.viewpagerindicator.CirclePageIndicator;
 
 public class ReportActivity extends AppCompatActivity {
 
@@ -19,6 +20,9 @@ public class ReportActivity extends AppCompatActivity {
         PagerAdapter mPagerActivity = new ReportPagerAdapter(this);
         ViewPager vpViewPager = (ViewPager)findViewById(R.id.vpPager);
         vpViewPager.setAdapter(new ReportPagerAdapter(this));
+
+        CirclePageIndicator circlePageIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
+        circlePageIndicator.setViewPager(vpViewPager);
 
     }
 
