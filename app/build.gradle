@@ -31,4 +31,6 @@ dependencies {
     apt 'com.github.hotchemi:permissionsdispatcher-processor:2.0.7'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
+    compile 'com.parse.bolts:bolts-android:1.+'
+    compile 'com.parse:parse-android:1.+'
 }
