@@ -20,7 +20,7 @@ import java.io.File;
 
 import ghostgear.fishhackathon.com.ghostgear.R;
 
-public class MainActivity extends AppCompatActivity {
+public class CameraActivity extends AppCompatActivity {
     public final String APP_TAG = "GhostGear";
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
     public String photoFileName = "photo.jpg";
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_camera);
         Button cameraButton = (Button) findViewById(R.id.button);
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
