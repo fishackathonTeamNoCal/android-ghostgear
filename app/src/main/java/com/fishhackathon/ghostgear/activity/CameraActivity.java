@@ -1,13 +1,13 @@
-package ghostgear.fishhackathon.com.ghostgear.activities;
+package com.fishhackathon.ghostgear.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,9 +16,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.io.File;
+import com.fishhackathon.ghostgear.R;
 
-import ghostgear.fishhackathon.com.ghostgear.R;
+import java.io.File;
 
 public class CameraActivity extends AppCompatActivity {
     public final String APP_TAG = "GhostGear";
