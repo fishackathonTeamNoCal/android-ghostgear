@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/android-ghostgear.iml" filepath="$PROJECT_DIR$/android-ghostgear.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ghostgear.iml" filepath="$PROJECT_DIR$/ghostgear.iml" />
     </modules>
   </component>
 </project>
