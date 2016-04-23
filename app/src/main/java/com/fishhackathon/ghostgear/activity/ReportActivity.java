@@ -1,4 +1,4 @@
-package ghostgear.fishhackathon.com.ghostgear.activities;
+package com.fishhackathon.ghostgear.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -6,8 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 
-import adapter.ReportPagerAdapter;
-import ghostgear.fishhackathon.com.ghostgear.R;
+import com.fishhackathon.ghostgear.R;
+import com.fishhackathon.ghostgear.adapter.ReportPagerAdapter;
 
 public class ReportActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package adapter;
+package com.fishhackathon.ghostgear.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -6,12 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import views.AnimalsEndangered;
-import views.MeshSize;
-import views.NetColor;
-import views.NumOfStrands;
-import views.OtherNotes;
-import views.TwineDiameter;
+import com.fishhackathon.ghostgear.views.AnimalsEndangered;
+import com.fishhackathon.ghostgear.views.MeshSize;
+import com.fishhackathon.ghostgear.views.NetColor;
+import com.fishhackathon.ghostgear.views.NumOfStrands;
+import com.fishhackathon.ghostgear.views.OtherNotes;
+import com.fishhackathon.ghostgear.views.TwineDiameter;
 
 /**
  * Created by gemma on 4/23/16.

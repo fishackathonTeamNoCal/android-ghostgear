@@ -1,9 +1,10 @@
-package views;
+package com.fishhackathon.ghostgear.views;
 
 import android.content.Context;
 import android.widget.RelativeLayout;
 
-import ghostgear.fishhackathon.com.ghostgear.R;
+import com.fishhackathon.ghostgear.R;
+
 
 public class NumOfStrands extends RelativeLayout {
 
