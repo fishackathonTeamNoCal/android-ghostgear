@@ -1,4 +1,4 @@
-package ghostgear.fishhackathon.com.ghostgear;
+package ghostgear.fishhackathon.com.ghostgear.activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
+
+import ghostgear.fishhackathon.com.ghostgear.R;
 
 public class MainActivity extends AppCompatActivity {
     public final String APP_TAG = "GhostGear";
