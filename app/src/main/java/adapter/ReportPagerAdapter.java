@@ -6,8 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import views.AnimalsEndangered;
 import views.MeshSize;
+import views.NetColor;
 import views.NumOfStrands;
+import views.OtherNotes;
+import views.TwineDiameter;
 
 /**
  * Created by gemma on 4/23/16.
@@ -35,9 +39,19 @@ public class ReportPagerAdapter extends PagerAdapter {
             case 1:
                 view = new NumOfStrands(context);
                 break;
-//            case 2:
-//                view = CpuView.getView(context, collection);
-//                break;
+            case 2:
+                view = new TwineDiameter(context);
+                break;
+            case 3:
+                view = new NetColor(context);
+                break;
+            case 4:
+                view = new AnimalsEndangered(context);
+                break;
+            case 5:
+                view = new OtherNotes(context);
+                break;
+
         }
 
         collection.addView(view);
@@ -46,7 +60,7 @@ public class ReportPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 6;
     }
 
     @Override
