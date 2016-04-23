@@ -1,4 +1,4 @@
-package application;
+package com.fishhackathon.ghostgear.application;
 import android.app.Application;
 
 
