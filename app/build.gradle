@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 23
@@ -22,4 +23,6 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.github.hotchemi:permissionsdispatcher:2.0.7'
+    apt 'com.github.hotchemi:permissionsdispatcher-processor:2.0.7'
 }
