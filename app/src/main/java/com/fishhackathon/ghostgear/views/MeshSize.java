@@ -1,14 +1,17 @@
 package com.fishhackathon.ghostgear.views;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.fishhackathon.ghostgear.R;
 import com.fishhackathon.ghostgear.activity.ReportActivity;
+import com.fishhackathon.ghostgear.activity.SubmittedActivity;
 import com.fishhackathon.ghostgear.application.MyApplication;
 import com.fishhackathon.ghostgear.models.NetInput;
+import com.fishhackathon.ghostgear.network.ReportingApi;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -62,12 +65,7 @@ public class MeshSize extends LinearLayout {
             @Override
             public void onClick(View v) {
                 application.netInput.setMeshSize(NetInput.HandMeasurement.LESS_THAN_ONE_FINGER);
-                application.complexPreferences.putObject("ghostGearPref", application.netInput);
-                application.complexPreferences.commit();
-
-                // move to next view in viewAdapter
-                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
-                reportActivity.moveToNextView();
+                afterSelection();
             }
         });
 
@@ -75,12 +73,7 @@ public class MeshSize extends LinearLayout {
             @Override
             public void onClick(View v) {
                 application.netInput.setMeshSize(NetInput.HandMeasurement.ONE_FINGER);
-                application.complexPreferences.putObject("ghostGearPref", application.netInput);
-                application.complexPreferences.commit();
-
-                // move to next view in viewAdapter
-                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
-                reportActivity.moveToNextView();
+                afterSelection();
             }
         });
 
@@ -88,12 +81,7 @@ public class MeshSize extends LinearLayout {
             @Override
             public void onClick(View v) {
                 application.netInput.setMeshSize(NetInput.HandMeasurement.TWO_FINGERS);
-                application.complexPreferences.putObject("ghostGearPref", application.netInput);
-                application.complexPreferences.commit();
-
-                // move to next view in viewAdapter
-                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
-                reportActivity.moveToNextView();
+                afterSelection();
             }
         });
 
@@ -101,12 +89,7 @@ public class MeshSize extends LinearLayout {
             @Override
             public void onClick(View v) {
                 application.netInput.setMeshSize(NetInput.HandMeasurement.THREE_FINGERS);
-                application.complexPreferences.putObject("ghostGearPref", application.netInput);
-                application.complexPreferences.commit();
-
-                // move to next view in viewAdapter
-                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
-                reportActivity.moveToNextView();
+                afterSelection();
             }
         });
 
@@ -114,12 +97,7 @@ public class MeshSize extends LinearLayout {
             @Override
             public void onClick(View v) {
                 application.netInput.setMeshSize(NetInput.HandMeasurement.FOUR_FINGERS);
-                application.complexPreferences.putObject("ghostGearPref", application.netInput);
-                application.complexPreferences.commit();
-
-                // move to next view in viewAdapter
-                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
-                reportActivity.moveToNextView();
+                afterSelection();
             }
         });
 
@@ -127,12 +105,7 @@ public class MeshSize extends LinearLayout {
             @Override
             public void onClick(View v) {
                 application.netInput.setMeshSize(NetInput.HandMeasurement.FIST);
-                application.complexPreferences.putObject("ghostGearPref", application.netInput);
-                application.complexPreferences.commit();
-
-                // move to next view in viewAdapter
-                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
-                reportActivity.moveToNextView();
+                afterSelection();
             }
         });
 
@@ -140,12 +113,7 @@ public class MeshSize extends LinearLayout {
             @Override
             public void onClick(View v) {
                 application.netInput.setMeshSize(NetInput.HandMeasurement.CLASPED_FIST);
-                application.complexPreferences.putObject("ghostGearPref", application.netInput);
-                application.complexPreferences.commit();
-
-                // move to next view in viewAdapter
-                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
-                reportActivity.moveToNextView();
+                afterSelection();
             }
         });
 
@@ -153,12 +121,7 @@ public class MeshSize extends LinearLayout {
             @Override
             public void onClick(View v) {
                 application.netInput.setMeshSize(NetInput.HandMeasurement.OPEN_HAND);
-                application.complexPreferences.putObject("ghostGearPref", application.netInput);
-                application.complexPreferences.commit();
-
-                // move to next view in viewAdapter
-                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
-                reportActivity.moveToNextView();
+                afterSelection();
             }
         });
 
@@ -166,14 +129,24 @@ public class MeshSize extends LinearLayout {
             @Override
             public void onClick(View v) {
                 application.netInput.setMeshSize(NetInput.HandMeasurement.GREATER_THAN_OPEN_HAND);
-                application.complexPreferences.putObject("ghostGearPref", application.netInput);
-                application.complexPreferences.commit();
-
-                // move to next view in viewAdapter
-                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
-                reportActivity.moveToNextView();
+                afterSelection();
             }
         });
 
+    }
+
+    private void afterSelection() {
+        MyApplication application = (MyApplication) context.getApplicationContext();
+        application.complexPreferences.putObject("ghostGearPref", application.netInput);
+        application.complexPreferences.commit();
+
+        ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
+
+        // To add more views, replace the rest of the code with the following        
+        // reportActivity.moveToNextView();
+
+        ReportingApi.report(reportActivity);
+        Intent i1 = new Intent(context, SubmittedActivity.class);
+        reportActivity.startActivity(i1);
     }
 }
