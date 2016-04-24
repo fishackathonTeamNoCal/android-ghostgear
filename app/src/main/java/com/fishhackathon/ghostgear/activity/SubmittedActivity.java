@@ -1,6 +1,8 @@
 package com.fishhackathon.ghostgear.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -42,6 +44,11 @@ public class SubmittedActivity extends AppCompatActivity {
         });
 
         TextView tvGearInfo = (TextView) findViewById(R.id.tvCountry);
+
+        SharedPreferences sharedpref = getSharedPreferences("GhostPref", Context.MODE_PRIVATE);
+
+        String submissionSummary = "Submitted info for: ";
+        tvGearInfo.setText(submissionSummary);
 
         MyApplication myApplication = (MyApplication) getApplication();
         NetSearchResult netSearchResult = myApplication.netReport.net.netSearchResult;

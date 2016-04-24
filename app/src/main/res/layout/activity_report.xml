@@ -53,7 +53,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:textColor="#FFF"
-            android:text="SAVE &amp; EXIT"/>
+            android:text="SUBMIT"/>
 
         <com.viewpagerindicator.CirclePageIndicator
             android:id="@+id/indicator"
