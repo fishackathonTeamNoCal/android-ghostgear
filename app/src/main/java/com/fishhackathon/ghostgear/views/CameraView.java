@@ -63,7 +63,6 @@ public class CameraView extends RelativeLayout {
                 onLaunchCamera(smallPhotoFileName, CAPTURE_SMALL_NET_IMAGE_ACTIVITY_REQUEST_CODE);
             }
         });
-
     }
 
     public void setImage(int code) {
