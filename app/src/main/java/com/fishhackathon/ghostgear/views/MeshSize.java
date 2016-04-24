@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.fishhackathon.ghostgear.R;
+import com.fishhackathon.ghostgear.activity.ReportActivity;
 import com.fishhackathon.ghostgear.application.MyApplication;
 import com.fishhackathon.ghostgear.models.NetInput;
 
@@ -50,23 +51,129 @@ public class MeshSize extends LinearLayout {
     public MeshSize(Context context) {
         super(context);
 
+        this.context = context;
+
         inflate(getContext(), R.layout.view_mesh_size, this);
-        
-        final MyApplication application = (MyApplication)context.getApplicationContext();
+
+        final MyApplication application = (MyApplication) context.getApplicationContext();
 
         ButterKnife.bind(this);
         imgMeshSize1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                application.netInput.setMeshSize(NetInput.HandMeasurement.THREE_FINGERS);
-                application.netInput.numberOfStrands = 2;
+                application.netInput.setMeshSize(NetInput.HandMeasurement.LESS_THAN_ONE_FINGER);
                 application.complexPreferences.putObject("ghostGearPref", application.netInput);
                 application.complexPreferences.commit();
 
-                // increment pageAdapter view (+1, unless it's the last one)
-//                pageAdapter.setCurrentItem(num);
-//                pageAdapter.notifyDataSetChanged()
+                // move to next view in viewAdapter
+                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
+                reportActivity.moveToNextView();
             }
         });
+
+        imgMeshSize2.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                application.netInput.setMeshSize(NetInput.HandMeasurement.ONE_FINGER);
+                application.complexPreferences.putObject("ghostGearPref", application.netInput);
+                application.complexPreferences.commit();
+
+                // move to next view in viewAdapter
+                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
+                reportActivity.moveToNextView();
+            }
+        });
+
+        imgMeshSize3.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                application.netInput.setMeshSize(NetInput.HandMeasurement.TWO_FINGERS);
+                application.complexPreferences.putObject("ghostGearPref", application.netInput);
+                application.complexPreferences.commit();
+
+                // move to next view in viewAdapter
+                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
+                reportActivity.moveToNextView();
+            }
+        });
+
+        imgMeshSize4.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                application.netInput.setMeshSize(NetInput.HandMeasurement.THREE_FINGERS);
+                application.complexPreferences.putObject("ghostGearPref", application.netInput);
+                application.complexPreferences.commit();
+
+                // move to next view in viewAdapter
+                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
+                reportActivity.moveToNextView();
+            }
+        });
+
+        imgMeshSize5.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                application.netInput.setMeshSize(NetInput.HandMeasurement.FOUR_FINGERS);
+                application.complexPreferences.putObject("ghostGearPref", application.netInput);
+                application.complexPreferences.commit();
+
+                // move to next view in viewAdapter
+                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
+                reportActivity.moveToNextView();
+            }
+        });
+
+        imgMeshSize6.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                application.netInput.setMeshSize(NetInput.HandMeasurement.FIST);
+                application.complexPreferences.putObject("ghostGearPref", application.netInput);
+                application.complexPreferences.commit();
+
+                // move to next view in viewAdapter
+                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
+                reportActivity.moveToNextView();
+            }
+        });
+
+        imgMeshSize7.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                application.netInput.setMeshSize(NetInput.HandMeasurement.CLASPED_FIST);
+                application.complexPreferences.putObject("ghostGearPref", application.netInput);
+                application.complexPreferences.commit();
+
+                // move to next view in viewAdapter
+                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
+                reportActivity.moveToNextView();
+            }
+        });
+
+        imgMeshSize8.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                application.netInput.setMeshSize(NetInput.HandMeasurement.OPEN_HAND);
+                application.complexPreferences.putObject("ghostGearPref", application.netInput);
+                application.complexPreferences.commit();
+
+                // move to next view in viewAdapter
+                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
+                reportActivity.moveToNextView();
+            }
+        });
+
+        imgMeshSize9.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                application.netInput.setMeshSize(NetInput.HandMeasurement.GREATER_THAN_OPEN_HAND);
+                application.complexPreferences.putObject("ghostGearPref", application.netInput);
+                application.complexPreferences.commit();
+
+                // move to next view in viewAdapter
+                ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
+                reportActivity.moveToNextView();
+            }
+        });
+
     }
 }

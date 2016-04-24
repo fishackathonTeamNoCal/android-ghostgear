@@ -72,4 +72,7 @@ public class ReportPagerAdapter extends PagerAdapter {
     public CharSequence getPageTitle(int position) {
         return titles.get(position);
     }
+
 }
+
+
