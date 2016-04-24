@@ -74,7 +74,7 @@ public class ReportActivity extends AppCompatActivity {
             public void onClick(View v) {
                 MyApplication app = (MyApplication) getApplication();
                 app.complexPreferences.commit();
-                finish();
+//                finish(); // ends viewAdapter, returning to activity that launches
             }
         }); 
 
