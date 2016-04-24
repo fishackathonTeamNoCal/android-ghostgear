@@ -27,6 +27,7 @@ public class ReportActivity extends AppCompatActivity {
         CirclePageIndicator circlePageIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
         circlePageIndicator.setViewPager(vpViewPager);
 
+
     }
 
     @Override
