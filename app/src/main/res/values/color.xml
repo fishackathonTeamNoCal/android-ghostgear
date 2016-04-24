@@ -277,10 +277,13 @@
     <color name="blue_grey_800">#37474f</color>
     <color name="blue_grey_900">#263238</color>
 
+    <color name="hot_pink">#FF1774</color>
+
 
     <!-- Colors for the app -->
     <color name="primary">#43BBCA</color>
     <color name="primary_dark">@color/light_blue_900</color>
     <color name="accent">@color/amber_500</color>
+    <color name="accent_pink">@color/hot_pink</color>
 
 </resources>

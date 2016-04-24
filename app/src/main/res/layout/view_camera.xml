@@ -2,57 +2,78 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:orientation="vertical">
-
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true">
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Take two photos: One zoomed out, and one zoomed in"
+            android:padding="5dp"/>
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:background="@color/red_100"
             android:minWidth="300dp"
             android:src="@drawable/camera"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
             android:id="@+id/ivBigPicture"
             android:layout_toLeftOf="@id/button"
-           />
+            />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true">
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/accent_pink"
             android:layout_alignParentRight="true"
+            android:text="Take Photo"
+            android:textColor="@android:color/white"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:id="@+id/bvTakeBigPicture"
            />
         </RelativeLayout>
 
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:minWidth="300dp"
+        android:src="@drawable/camera"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:id="@+id/ivSmallPicture"
+        android:layout_toLeftOf="@+id/bvTakeSmallPicture"
+        />
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:scaleType="center"
-            android:minWidth="300dp"
-            android:background="@color/red_100"
-            android:id="@+id/ivSmallPicture"
-            android:layout_alignBottom="@+id/bvTakeSmallPicture"
-            android:layout_toLeftOf="@+id/bvTakeSmallPicture"
-            />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/accent_pink"
             android:layout_alignParentRight="true"
+            android:text="Take Photo"
+            android:textColor="@android:color/white"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:id="@+id/bvTakeSmallPicture"
 
             />
