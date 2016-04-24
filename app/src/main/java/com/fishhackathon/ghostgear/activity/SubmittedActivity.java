@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.fishhackathon.ghostgear.R;
 import com.fishhackathon.ghostgear.application.MyApplication;
+import com.fishhackathon.ghostgear.models.NetInput;
 import com.fishhackathon.ghostgear.models.NetSearchResult;
 
 import butterknife.Bind;
@@ -45,12 +46,24 @@ public class SubmittedActivity extends AppCompatActivity {
 
         MyApplication myApplication = (MyApplication) getApplication();
         NetSearchResult netSearchResult = myApplication.netReport.net.netSearchResult;
-        if (netSearchResult != null) {
-            String submissionDescription =
-                    "Net Code: " + netSearchResult.netCode + "\n" +
-                            "Country of Origin: " + netSearchResult.origin;
-            Log.i("Ghost Gear", submissionDescription);
-            tvGearInfo.setText(submissionDescription);
+        String submissionSummary = "Submitted info for: \n";
+
+        if (myApplication.complexPreferences.getObject("ghostGearPref", NetInput.class).getSingleMeshSize() != null) {
+            submissionSummary = submissionSummary + "  Mesh diameter - " +
+                    myApplication.complexPreferences.getObject("ghostGearPref", NetInput.class).getSingleMeshSize() + "cm" +
+                    "\n";
         }
+        if   (myApplication.complexPreferences.getObject("ghostGearPref", NetInput.class).numberOfStrands != null) {
+            submissionSummary = submissionSummary + "  Number of strands - " + myApplication.complexPreferences.getObject("ghostGearPref", NetInput.class).numberOfStrands + "\n";
+        }
+
+        String submissionDescription = "";
+        if (netSearchResult != null) {
+            submissionDescription =
+                    "  Net Code: " + netSearchResult.netCode + "\n" +
+                            "  Country of Origin: " + netSearchResult.origin;
+            Log.i("Ghost Gear", submissionDescription);
+        }
+        tvGearInfo.setText(submissionSummary + submissionDescription);
     }
 }

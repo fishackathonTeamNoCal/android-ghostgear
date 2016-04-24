@@ -66,6 +66,7 @@ public class ReportActivity extends AppCompatActivity {
         mPager = new ReportPagerAdapter(this);
         vpViewPager.setAdapter(mPager);
         toolbar.setTitle(mPager.getPageTitle(0));
+
         vpViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -97,6 +98,8 @@ public class ReportActivity extends AppCompatActivity {
         } else {
             requestLocationUpdate();
         }
+
+
 
         btSaveAndExit.setOnClickListener(new View.OnClickListener() {
             @Override
