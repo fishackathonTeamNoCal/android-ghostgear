@@ -9,6 +9,9 @@ import com.fishhackathon.ghostgear.R;
 import com.fishhackathon.ghostgear.activity.ReportActivity;
 import com.fishhackathon.ghostgear.application.MyApplication;
 import com.fishhackathon.ghostgear.models.NetInput;
+import com.fishhackathon.ghostgear.network.ReportingApi;
+import com.parse.ParseException;
+import com.parse.SaveCallback;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -137,13 +140,9 @@ public class MeshSize extends LinearLayout {
         application.complexPreferences.putObject("ghostGearPref", application.netInput);
         application.complexPreferences.commit();
 
-        ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
+        final ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
 
         // To add more views, replace the rest of the code with the following        
          reportActivity.moveToNextView();
-
-//        ReportingApi.report(reportActivity);
-//        Intent i1 = new Intent(context, SubmittedActivity.class);
-//        reportActivity.startActivity(i1);
     }
 }

@@ -11,6 +11,9 @@ import com.fishhackathon.ghostgear.R;
 import com.fishhackathon.ghostgear.activity.ReportActivity;
 import com.fishhackathon.ghostgear.activity.SubmittedActivity;
 import com.fishhackathon.ghostgear.application.MyApplication;
+import com.fishhackathon.ghostgear.network.ReportingApi;
+import com.parse.ParseException;
+import com.parse.SaveCallback;
 
 
 public class NumOfStrands extends LinearLayout {
@@ -37,9 +40,14 @@ public class NumOfStrands extends LinearLayout {
                 application.complexPreferences.putObject("ghostGearPref", application.netInput);
                 application.complexPreferences.commit();
 
-                ReportActivity reportActivity = (ReportActivity) NumOfStrands.this.context;
-                Intent i1 = new Intent(NumOfStrands.this.context, SubmittedActivity.class);
-                reportActivity.startActivity(i1);
+                final ReportActivity reportActivity = (ReportActivity) NumOfStrands.this.context;
+                ReportingApi.report(reportActivity, new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        Intent i1 = new Intent(NumOfStrands.this.context, SubmittedActivity.class);
+                        reportActivity.startActivity(i1);
+                    }
+                });
             }
         });
 
