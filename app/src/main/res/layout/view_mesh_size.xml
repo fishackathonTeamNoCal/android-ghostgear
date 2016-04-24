@@ -78,7 +78,7 @@
                         android:id="@+id/img_meshSize6"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/mesh_size_6"
+                        android:src="@drawable/mesh_size_fist"
                         android:layout_weight="0.33"/>
                 </LinearLayout>
 
@@ -91,19 +91,19 @@
                         android:id="@+id/img_meshSize7"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/mesh_size_9"
+                        android:src="@drawable/mesh_size_clasped_fist"
                         android:layout_weight="0.33"/>
                     <ImageView
                         android:id="@+id/img_meshSize8"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/mesh_size_8"
+                        android:src="@drawable/mesh_size_open_hand"
                         android:layout_weight="0.33"/>
                     <ImageView
                         android:id="@+id/img_meshSize9"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/mesh_size_7"
+                        android:src="@drawable/mesh_size_greater_than_open_hand"
                         android:layout_weight="0.33"/>
                 </LinearLayout>
 
