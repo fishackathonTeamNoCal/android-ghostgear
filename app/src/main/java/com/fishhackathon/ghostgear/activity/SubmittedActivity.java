@@ -1,8 +1,6 @@
 package com.fishhackathon.ghostgear.activity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +11,7 @@ import android.widget.TextView;
 
 import com.fishhackathon.ghostgear.R;
 import com.fishhackathon.ghostgear.application.MyApplication;
+import com.fishhackathon.ghostgear.models.NetInput;
 import com.fishhackathon.ghostgear.models.NetSearchResult;
 
 import butterknife.Bind;
@@ -45,19 +44,26 @@ public class SubmittedActivity extends AppCompatActivity {
 
         TextView tvGearInfo = (TextView) findViewById(R.id.tvCountry);
 
-        SharedPreferences sharedpref = getSharedPreferences("GhostPref", Context.MODE_PRIVATE);
-
-        String submissionSummary = "Submitted info for: ";
-        tvGearInfo.setText(submissionSummary);
-
         MyApplication myApplication = (MyApplication) getApplication();
         NetSearchResult netSearchResult = myApplication.netReport.net.netSearchResult;
-        if (netSearchResult != null) {
-            String submissionDescription =
-                    "Net Code: " + netSearchResult.netCode + "\n" +
-                            "Country of Origin: " + netSearchResult.origin;
-            Log.i("Ghost Gear", submissionDescription);
-            tvGearInfo.setText(submissionDescription);
+        String submissionSummary = "Submitted info for: \n";
+
+        if (myApplication.complexPreferences.getObject("ghostGearPref", NetInput.class).getSingleMeshSize() != null) {
+            submissionSummary = submissionSummary + "  Mesh diameter - " +
+                    myApplication.complexPreferences.getObject("ghostGearPref", NetInput.class).getSingleMeshSize() + "cm" +
+                    "\n";
         }
+        if   (myApplication.complexPreferences.getObject("ghostGearPref", NetInput.class).numberOfStrands != null) {
+            submissionSummary = submissionSummary + "  Number of strands - " + myApplication.complexPreferences.getObject("ghostGearPref", NetInput.class).numberOfStrands + "\n";
+        }
+
+        String submissionDescription = "";
+        if (netSearchResult != null) {
+            submissionDescription =
+                    "  Net Code: " + netSearchResult.netCode + "\n" +
+                            "  Country of Origin: " + netSearchResult.origin;
+            Log.i("Ghost Gear", submissionDescription);
+        }
+        tvGearInfo.setText(submissionSummary + submissionDescription);
     }
 }
