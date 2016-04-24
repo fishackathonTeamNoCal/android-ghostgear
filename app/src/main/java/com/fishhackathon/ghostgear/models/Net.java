@@ -6,14 +6,10 @@ package com.fishhackathon.ghostgear.models;
  */
 public class Net {
     public NetInput netInput;
-    public String netCode;
-    public String origin;
+    public /*@Nullable*/ NetSearchResult netSearchResult;
 
-    // TODO: Add fields for photos and net use.
-
-    public Net(NetInput netInput, String netCode, String origin) {
+    public Net(NetInput netInput, /*@Nullable*/ NetSearchResult netSearchResult) {
         this.netInput = netInput;
-        this.netCode = netCode;
-        this.origin = origin;
+        this.netSearchResult = netSearchResult;
     }
 }

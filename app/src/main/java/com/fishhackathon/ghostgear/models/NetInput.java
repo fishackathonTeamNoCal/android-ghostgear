@@ -4,28 +4,16 @@ package com.fishhackathon.ghostgear.models;
  * Holds the input data about a net.
  */
 public class NetInput {
+    private static final double EPSILON = 0.0001;
+
     public static final class NumberRange {
         public final double min;  // Inclusive
-
-        // TODO: Do we actually want max to be exclusive? It means we can't specify a specific
-        // number by having equal min and max.
         public final double max;  // Exclusive.
 
         public NumberRange(double min, double max) {
             this.min = min;
             this.max = max;
         }
-    }
-
-    public enum Color {
-        BLACK,
-        BLUE,
-        BROWN,
-        CLEAR,
-        GREEN,
-        GREY,
-        RED,
-        WHITE
     }
 
     public enum HandMeasurement {
@@ -45,16 +33,31 @@ public class NetInput {
         }
     }
 
-    public Color color;
-    public NumberRange meshSize;  // in cm
-    public int numberOfStrands;
-    public NumberRange twineDiameter;  // in mm
+    public /*@Nullable*/ Color color;
+    public /*@Nullable*/ NumberRange meshSize;  // in cm
+    public /*@Nullable*/ Integer numberOfStrands;
+    public /*@Nullable*/ Double twineDiameter;  // in mm
 
-    // Provide a setter when using hand measurements. For anything else just set the field directly.
+    // Provide setters using either mm or HandMeasurement. For any other fields just set the field
+    // directly.
     public void setMeshSize(HandMeasurement handMeasurement) {
         this.meshSize = handMeasurement.numberRange;
     }
 
-    // TODO: Is there a user-friendly way of setting twine-diameter? Maybe we'll have to ask
-    // them to provide mm but provide them with references like in the ghost_net_id_guide.pdf.
+    public void setExactMeshSize(double meshSize) {
+        this.meshSize = new NumberRange(meshSize, meshSize + EPSILON);
+    }
+
+    /**
+     * Returns a single mesh size. If we have a range specified, returns the average.
+     */
+    public Double getSingleMeshSize() {
+        if (meshSize == null) {
+            return null;
+        }
+        if (meshSize.max - meshSize.min < 2 * EPSILON) {
+            return meshSize.min;
+        }
+        return (meshSize.min + meshSize.max) / 2;
+    }
 }
