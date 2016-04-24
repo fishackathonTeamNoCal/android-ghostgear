@@ -279,7 +279,7 @@
 
 
     <!-- Colors for the app -->
-    <color name="primary">@color/light_blue_A400</color>
+    <color name="primary">#43BBCA</color>
     <color name="primary_dark">@color/light_blue_900</color>
     <color name="accent">@color/amber_500</color>
 

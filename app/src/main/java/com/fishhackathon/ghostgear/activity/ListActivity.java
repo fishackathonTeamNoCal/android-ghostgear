@@ -1,18 +1,41 @@
 package com.fishhackathon.ghostgear.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.fishhackathon.ghostgear.R;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class ListActivity extends AppCompatActivity {
+    @Bind(R.id.toolbar)
+    Toolbar mActionBarToolbar;
+
+    @Bind(R.id.bvAddNewReport)
+    FloatingActionButton bvAddNewReport;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+        ButterKnife.bind(this);
+        mActionBarToolbar.setTitle("Nets Reported");
+        setSupportActionBar(mActionBarToolbar);
+
+        bvAddNewReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ListActivity.this, ReportActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override

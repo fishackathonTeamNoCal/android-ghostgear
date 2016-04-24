@@ -17,9 +17,10 @@
             android:layout_alignParentLeft="true"
             android:background="@color/red_100"
             android:minWidth="300dp"
-            android:scaleType="center"
+            android:src="@drawable/camera"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
             android:id="@+id/ivBigPicture"
-            android:layout_alignBottom="@+id/bvTakeBigPicture"
             android:layout_toLeftOf="@id/button"
            />
         <Button

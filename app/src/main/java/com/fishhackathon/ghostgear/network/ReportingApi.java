@@ -43,7 +43,7 @@ public final class ReportingApi {
     private ReportingApi() {};
 
     public static void report(NetReport netReport) {
-        ParseObject parseNetReport = new ParseObject("NetReport");
+        ParseObject parseNetReport = new ParseObject(NET_REPORT);
         Net net = netReport.net;
 
         // If there was a NetSearchResult, use it. Otherwise use the NetInput.
@@ -98,5 +98,7 @@ public final class ReportingApi {
         ParseUtils.putIfNotNull(parseNetReport, NET_CONSTRUCTION, netReport.netConstruction);
         ParseUtils.putIfNotNull(parseNetReport, TYPE_OF_TWINE, netReport.typeOfTwine);
         ParseUtils.putIfNotNull(parseNetReport, TYPE_OF_MATERIAL, netReport.typeOfMaterial);
+
+        parseNetReport.saveInBackground();
     }
 }
