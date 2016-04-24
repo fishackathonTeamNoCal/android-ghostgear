@@ -191,9 +191,6 @@ public class ReportActivity extends AppCompatActivity {
             } else { // Result was a failure
                 Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
-
-            // TODO(jchen): This is a hack to test the ReportingApi
-            //ReportingApi.report(this);
         }
     }
 }
