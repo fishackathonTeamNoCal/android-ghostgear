@@ -93,7 +93,9 @@ public final class ReportingApi {
         } else {
 
             NetInput netInput = net.netInput;
-            ParseUtils.putIfNotNull(parseNetReport, COLOR, netInput.color.toParseString());
+            if (netInput.color != null) {
+                ParseUtils.putIfNotNull(parseNetReport, COLOR, netInput.color.toParseString());
+            }
 
             // todo: Is it okay to force mesh size into a number?
             ParseUtils.putIfNotNull(parseNetReport, MESH_SIZE, netInput.getSingleMeshSize());
