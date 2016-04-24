@@ -4,29 +4,79 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.fishhackathon.ghostgear.R;
 import com.fishhackathon.ghostgear.adapter.ReportPagerAdapter;
+import com.fishhackathon.ghostgear.application.MyApplication;
 import com.fishhackathon.ghostgear.views.CameraView;
 import com.viewpagerindicator.CirclePageIndicator;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class ReportActivity extends AppCompatActivity {
     ReportPagerAdapter mPager;
+
+    @Bind(R.id.vpPager)
+    ViewPager vpViewPager;
+
+
+    @Bind(R.id.indicator)
+    CirclePageIndicator circlePageIndicator;
+
+    @Bind(R.id.btSaveAndExit)
+    Button btSaveAndExit;
+
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+
+    public Toolbar getToolbar() {
+        return toolbar;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
+        ButterKnife.bind(this);
 
         mPager = new ReportPagerAdapter(this);
-        ViewPager vpViewPager = (ViewPager)findViewById(R.id.vpPager);
         vpViewPager.setAdapter(mPager);
+        toolbar.setTitle(mPager.getPageTitle(0));
+        vpViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-        CirclePageIndicator circlePageIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                toolbar.setTitle(mPager.getPageTitle(position));
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
         circlePageIndicator.setViewPager(vpViewPager);
 
+        btSaveAndExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyApplication app = (MyApplication) getApplication();
+                app.complexPreferences.commit();
+                finish();
+            }
+        }); 
 
     }
 
