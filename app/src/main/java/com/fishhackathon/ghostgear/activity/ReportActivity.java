@@ -1,6 +1,7 @@
 package com.fishhackathon.ghostgear.activity;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -22,16 +23,14 @@ import android.widget.Toast;
 import com.fishhackathon.ghostgear.R;
 import com.fishhackathon.ghostgear.adapter.ReportPagerAdapter;
 import com.fishhackathon.ghostgear.application.MyApplication;
-import com.fishhackathon.ghostgear.views.CameraView;
-import com.viewpagerindicator.CirclePageIndicator;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import com.fishhackathon.ghostgear.network.ReportingApi;
 import com.fishhackathon.ghostgear.views.CameraView;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.Date;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class ReportActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 0;
@@ -102,6 +101,10 @@ public class ReportActivity extends AppCompatActivity {
             public void onClick(View v) {
                 MyApplication app = (MyApplication) getApplication();
                 app.complexPreferences.commit();
+                ReportingApi.report(ReportActivity.this);
+
+                Intent i1 = new Intent(getBaseContext(), SubmittedActivity.class);
+                startActivity(i1);
 //                finish(); // ends viewAdapter, returning to activity that launches
             }
         }); 

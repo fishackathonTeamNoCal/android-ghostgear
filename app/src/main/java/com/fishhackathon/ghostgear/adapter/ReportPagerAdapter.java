@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.fishhackathon.ghostgear.views.CameraView;
 import com.fishhackathon.ghostgear.views.MeshSize;
-import com.fishhackathon.ghostgear.views.TwineDiameter;
+import com.fishhackathon.ghostgear.views.NumOfStrands;
 
 import java.util.ArrayList;
 
@@ -29,7 +29,8 @@ public class ReportPagerAdapter extends PagerAdapter {
         titles = new ArrayList<>();
         views.add(new CameraView(context));
         views.add(new MeshSize(context));
-        views.add(new TwineDiameter(context));
+        views.add(new NumOfStrands(context));
+//        views.add(new TwineDiameter(context));
 //        views.add(new NetColor(context));
 //        views.add(new AnimalsEndangered(context));
 //        views.add(new OtherNotes(context));
@@ -39,7 +40,8 @@ public class ReportPagerAdapter extends PagerAdapter {
         titles.add("3. Number of Strands");
 //        titles.add("4. Twine Diameter");
 //        titles.add("5. Net Color");
-//        titles.add("6. Wildlife");
+//        titles.add("6. Animals Endangered");
+//        titles.add("7. Wildlife");
     }
 
 
