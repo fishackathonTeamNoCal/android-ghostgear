@@ -30,7 +30,7 @@ public class NetReport {
 
         public /*@Nullable*/ Type type;
 
-        // TODO: Should this be an enum? With options like "injured"?
+        // todo: Should this be an enum? With options like "injured"?
         public /*@Nullable*/ Boolean alive;
 
         public Animal(/*@Nullable*/ Type type, /*@Nullable*/ boolean alive) {
@@ -40,8 +40,10 @@ public class NetReport {
     }
 
     public Net net;
-    public /*@Nullable*/ String firstName;
-    public /*@Nullable*/ String lastName;
+
+    // TODO: Hardcoded names for now
+    public /*@Nullable*/ String firstName = "Jason";
+    public /*@Nullable*/ String lastName = "Chen";
     public /*@Nullable*/ String emailAddress;
     public /*@Nullable*/ String country;
     public /*@Nullable*/ String island;
@@ -51,7 +53,7 @@ public class NetReport {
     public /*@Nullable*/ String overallPhotoFile;
     public /*@Nullable*/ String closeupPhotoFile;
 
-    // TODO: We should probably actually have a List<Animal>
+    // todo: We should probably actually have a List<Animal>
     public /*@Nullable*/ Animal animal;
     public /*@Nullable*/ String netConstruction;
     public /*@Nullable*/ String typeOfTwine;
