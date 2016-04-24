@@ -25,7 +25,8 @@ public class LoginActivity extends AppCompatActivity {
         bvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, ListActivity.class);
+                Intent i = new Intent(LoginActivity.this, ReportActivity.class);
+                // ListActivity --> see list of Activities submitted
                 startActivity(i);
             }
         });
