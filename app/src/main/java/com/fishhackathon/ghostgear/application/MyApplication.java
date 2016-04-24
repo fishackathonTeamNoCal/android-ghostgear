@@ -1,4 +1,5 @@
 package com.fishhackathon.ghostgear.application;
+
 import android.app.Application;
 
 import com.fishhackathon.ghostgear.lib.ComplexPreferences;
@@ -17,10 +18,6 @@ public class MyApplication extends Application {
         ParseUtils.initializeParse(this);
 
         complexPreferences  = ComplexPreferences.getComplexPreferences(this, "ghostGearPref", MODE_PRIVATE);
-
-        netInput.color = NetInput.Color.BROWN;
-        complexPreferences.putObject("ghostGearPref", netInput);
-        complexPreferences.commit();
 
     }
 
