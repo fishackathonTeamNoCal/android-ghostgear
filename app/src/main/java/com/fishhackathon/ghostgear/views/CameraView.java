@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.fishhackathon.ghostgear.R;
+import com.fishhackathon.ghostgear.application.MyApplication;
+import com.fishhackathon.ghostgear.models.NetInput;
 
 import java.io.File;
 
@@ -63,6 +65,14 @@ public class CameraView extends RelativeLayout {
                 onLaunchCamera(smallPhotoFileName, CAPTURE_SMALL_NET_IMAGE_ACTIVITY_REQUEST_CODE);
             }
         });
+
+        MyApplication application = (MyApplication)context.getApplicationContext();
+        application.netInput.color = NetInput.Color.BROWN;
+        application.netInput.setMeshSize(NetInput.HandMeasurement.THREE_FINGERS);
+//        application.netInput.numberOfStrands = 2;
+//        application.netInput.twineDiameter = 0.5;
+        application.complexPreferences.putObject("ghostGearPref", application.netInput);
+        application.complexPreferences.commit();
     }
 
     public void setImage(int code) {
