@@ -5,6 +5,7 @@
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,7 +76,6 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:id="@+id/bvTakeSmallPicture"
-
             />
     </RelativeLayout>
 
