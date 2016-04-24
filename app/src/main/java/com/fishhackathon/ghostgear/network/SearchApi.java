@@ -61,17 +61,16 @@ public final class SearchApi {
                     List<NetSearchResult> netSearchResults = new ArrayList<>();
                     for (ParseObject parseObject : objects) {
 
-                        // TODO: I'm sure there's a cleaner way to handle this...
-                        Double twineDiameterDouble = null;
-                        Number twineDiameterNumber = parseObject.getNumber(TWINE_DIAMETER);
-                        if (twineDiameterNumber != null) {
-                            twineDiameterDouble = twineDiameterNumber.doubleValue();
+                        // todo: I'm sure there's a cleaner way to handle this...
+                        Integer numberOfStrands = parseObject.getInt(TWINE_DIAMETER);
+                        if (numberOfStrands == 0) {
+                            numberOfStrands = null;
                         }
                         netSearchResults.add(new NetSearchResult(
                                 Color.valueOf(parseObject.getString(COLOR).toUpperCase()),
                                 parseObject.getDouble(MESH_SIZE),
-                                parseObject.getInt(NUMBER_OF_STRANDS),
-                                twineDiameterDouble,
+                                numberOfStrands,
+                                parseObject.getDouble(TWINE_DIAMETER),
                                 parseObject.getString(NET_CODE),
                                 parseObject.getString(ORIGIN)));
                     }

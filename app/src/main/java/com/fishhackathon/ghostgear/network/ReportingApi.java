@@ -1,14 +1,20 @@
 package com.fishhackathon.ghostgear.network;
 
+import android.content.Context;
+import android.util.Log;
+
+import com.fishhackathon.ghostgear.application.MyApplication;
 import com.fishhackathon.ghostgear.models.Net;
 import com.fishhackathon.ghostgear.models.NetInput;
 import com.fishhackathon.ghostgear.models.NetReport;
 import com.fishhackathon.ghostgear.models.NetSearchResult;
+import com.google.gson.Gson;
 import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * Send reports to the backend.
@@ -42,7 +48,35 @@ public final class ReportingApi {
 
     private ReportingApi() {};
 
-    public static void report(NetReport netReport) {
+    public static void report(Context context) {
+        final MyApplication myApplication = (MyApplication) context.getApplicationContext();
+        final NetInput netInput = myApplication.netInput;
+
+        // First make a call to the SearchApi.
+        // TODO: Would like to show this result to the user and possibly confirm.
+        SearchApi.search(netInput, new SearchApi.SearchCallback() {
+            @Override
+            public void done(List<NetSearchResult> netSearchResults) {
+                Net net;
+                if (netSearchResults.size() > 0) {
+                    net = new Net(netInput, netSearchResults.get(0));
+                } else {
+                    net = new Net(netInput, null);
+                }
+                NetReport netReport = myApplication.netReport;
+                netReport.net = net;
+                Log.i("GhostGear", "Report: " + new Gson().toJson(netReport));
+                report(netReport);
+            }
+
+            @Override
+            public void error() {
+
+            }
+        });
+    }
+
+    private static void report(NetReport netReport) {
         ParseObject parseNetReport = new ParseObject(NET_REPORT);
         Net net = netReport.net;
 
@@ -60,7 +94,7 @@ public final class ReportingApi {
             NetInput netInput = net.netInput;
             ParseUtils.putIfNotNull(parseNetReport, COLOR, netInput.color.toParseString());
 
-            // TODO: Is it okay to force mesh size into a number?
+            // todo: Is it okay to force mesh size into a number?
             ParseUtils.putIfNotNull(parseNetReport, MESH_SIZE, netInput.getSingleMeshSize());
             ParseUtils.putIfNotNull(parseNetReport, TWINE_DIAMETER, netInput.twineDiameter);
             ParseUtils.putIfNotNull(parseNetReport, NUMBER_OF_STRANDS, netInput.numberOfStrands);

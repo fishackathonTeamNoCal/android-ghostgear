@@ -41,4 +41,5 @@ dependencies {
     compile "com.android.support:design:${supportLibVersion}"
     compile "com.android.support:percent:${supportLibVersion}"
     compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.google.android.gms:play-services:8.4.0'
 }

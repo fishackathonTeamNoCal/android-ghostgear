@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.fishhackathon.ghostgear.R;
+import com.fishhackathon.ghostgear.application.MyApplication;
 
 import java.io.File;
 
@@ -68,14 +69,19 @@ public class CameraView extends RelativeLayout {
     public void setImage(int code) {
         String photoName;
         ImageView ivPreview;
+        Uri takenPhotoUri;
+        MyApplication application = (MyApplication)context.getApplicationContext();
         if (code == CAPTURE_BIG_NET_IMAGE_ACTIVITY_REQUEST_CODE) {
             photoName = bigPhotoFileName;
             ivPreview = ivBigPicture;
+            takenPhotoUri = getPhotoFileUri(photoName);
+            application.netReport.overallPhotoFile = takenPhotoUri.getPath();
         } else {
             photoName = smallPhotoFileName;
             ivPreview = ivSmallPicture;
+            takenPhotoUri = getPhotoFileUri(photoName);
+            application.netReport.closeupPhotoFile = takenPhotoUri.getPath();
         }
-        Uri takenPhotoUri = getPhotoFileUri(photoName);
         // by this point we have the camera photo on disk
         Bitmap takenImage = BitmapFactory.decodeFile(takenPhotoUri.getPath());
         // Load the taken image into a preview
