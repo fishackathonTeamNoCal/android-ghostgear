@@ -25,22 +25,19 @@
                 android:padding="5dp"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
-                android:paddingLeft="20dp"
-                android:onClick="meshSize_input"/>
+                android:paddingLeft="20dp"/>
             <ImageView
                 android:id="@+id/img_meshSize2"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:src="@drawable/android"
-                android:padding="5dp"
-                android:onClick="meshSize_input"/>
+                android:padding="5dp"/>
             <ImageView
                 android:id="@+id/img_meshSize3"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="@drawable/android"
-                android:padding="5dp"
-                android:onClick="meshSize_input"/>
+                android:padding="5dp"/>
         </LinearLayout>
 
     </ScrollView>

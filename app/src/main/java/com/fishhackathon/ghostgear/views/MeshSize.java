@@ -1,7 +1,6 @@
 package com.fishhackathon.ghostgear.views;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,6 +21,8 @@ public class MeshSize extends LinearLayout {
     @Bind(R.id.img_meshSize3)
     ImageView imgMeshSize3;
 
+    Context context;
+
 //    LESS_THAN_ONE_FINGER,
 //    ONE_FINGER,
 //    TWO_FINGERS,
@@ -36,32 +37,20 @@ public class MeshSize extends LinearLayout {
         super(context);
 
         inflate(getContext(), R.layout.view_mesh_size, this);
+        
+        final MyApplication application = (MyApplication)context.getApplicationContext();
 
         ButterKnife.bind(this);
-        imgMeshSize1.setOnClickListener(new View.OnClickListener() {
+        imgMeshSize1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent (MeshSize.this);
-                MyApplication application = (MyApplication)context.getApplicationContext();
-                //        application.netInput.color = NetInput.Color.BROWN;
-                        application.netInput.setMeshSize(NetInput.HandMeasurement.THREE_FINGERS);
-                //        application.netInput.numberOfStrands = 2;
-                //        application.netInput.twineDiameter = 0.5;   <-- double not range
-                //        application.complexPreferences.putObject("ghostGearPref", netInput);
-                //        application.complexPreferences.commit();
-                ;
+                application.netInput.setMeshSize(NetInput.HandMeasurement.THREE_FINGERS);
+                application.netInput.numberOfStrands = 2;
+                application.complexPreferences.putObject("ghostGearPref", application.netInput);
+                application.complexPreferences.commit();
+
+//                Log.i("ggg", "pref mesh size setting:  " + application.complexPreferences.getObject("ghostGearPref", NetInput.class).numberOfStrands);
             }
         });
-
-
-        ////Notes for saving
-        //        MyApplication application = (MyApplication)context.getApplicationContext();
-        //        application.netInput.color = Color.BROWN;
-        //        application.netInput.setMeshSize(NetInput.HandMeasurement.THREE_FINGERS);
-        //        application.netInput.numberOfStrands = 2;
-        //        application.netInput.twineDiameter = 0.5;
-        //        application.complexPreferences.putObject("ghostGearPref", application.netInput);
-        //        application.complexPreferences.commit();
-
     }
 }
