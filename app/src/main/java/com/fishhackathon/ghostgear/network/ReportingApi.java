@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
+import com.parse.SaveCallback;
 
 import java.io.File;
 import java.util.List;
@@ -48,7 +49,7 @@ public final class ReportingApi {
 
     private ReportingApi() {};
 
-    public static void report(Context context) {
+    public static void report(Context context, final SaveCallback saveCallback) {
         final MyApplication myApplication = (MyApplication) context.getApplicationContext();
         final NetInput netInput = myApplication.netInput;
 
@@ -66,7 +67,7 @@ public final class ReportingApi {
                 NetReport netReport = myApplication.netReport;
                 netReport.net = net;
                 Log.i("GhostGear", "Report: " + new Gson().toJson(netReport));
-                report(netReport);
+                report(netReport, saveCallback);
             }
 
             @Override
@@ -76,7 +77,7 @@ public final class ReportingApi {
         });
     }
 
-    private static void report(NetReport netReport) {
+    private static void report(NetReport netReport, SaveCallback saveCallback) {
         ParseObject parseNetReport = new ParseObject(NET_REPORT);
         Net net = netReport.net;
 
@@ -133,6 +134,6 @@ public final class ReportingApi {
         ParseUtils.putIfNotNull(parseNetReport, TYPE_OF_TWINE, netReport.typeOfTwine);
         ParseUtils.putIfNotNull(parseNetReport, TYPE_OF_MATERIAL, netReport.typeOfMaterial);
 
-        parseNetReport.saveInBackground();
+        parseNetReport.saveInBackground(saveCallback);
     }
 }

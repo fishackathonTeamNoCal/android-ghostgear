@@ -25,6 +25,8 @@ import com.fishhackathon.ghostgear.adapter.ReportPagerAdapter;
 import com.fishhackathon.ghostgear.application.MyApplication;
 import com.fishhackathon.ghostgear.network.ReportingApi;
 import com.fishhackathon.ghostgear.views.CameraView;
+import com.parse.ParseException;
+import com.parse.SaveCallback;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.Date;
@@ -101,11 +103,14 @@ public class ReportActivity extends AppCompatActivity {
             public void onClick(View v) {
                 MyApplication app = (MyApplication) getApplication();
                 app.complexPreferences.commit();
-                ReportingApi.report(ReportActivity.this);
-
-                Intent i1 = new Intent(getBaseContext(), SubmittedActivity.class);
-                startActivity(i1);
-//                finish(); // ends viewAdapter, returning to activity that launches
+                ReportingApi.report(ReportActivity.this, new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        Intent i1 = new Intent(getBaseContext(), SubmittedActivity.class);
+                        startActivity(i1);
+//                        finish(); // ends viewAdapter, returning to activity that launches
+                    }
+                });
             }
         }); 
 
