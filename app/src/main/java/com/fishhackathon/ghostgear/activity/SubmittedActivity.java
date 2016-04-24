@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.fishhackathon.ghostgear.R;
 import com.fishhackathon.ghostgear.application.MyApplication;
@@ -29,6 +30,7 @@ public class SubmittedActivity extends AppCompatActivity {
         mActionBarToolbar.setTitle("Successfully Submitted!");
         setSupportActionBar(mActionBarToolbar);
 
+
         ImageView ivTurtles = (ImageView) findViewById(R.id.ivTurtles);
 
         ivTurtles.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +41,8 @@ public class SubmittedActivity extends AppCompatActivity {
             }
         });
 
+        TextView tvGearInfo = (TextView) findViewById(R.id.tvCountry);
+
         MyApplication myApplication = (MyApplication) getApplication();
         NetSearchResult netSearchResult = myApplication.netReport.net.netSearchResult;
         if (netSearchResult != null) {
@@ -46,6 +50,7 @@ public class SubmittedActivity extends AppCompatActivity {
                     "Net Code: " + netSearchResult.netCode + "\n" +
                             "Country of Origin: " + netSearchResult.origin;
             Log.i("Ghost Gear", submissionDescription);
+            tvGearInfo.setText(submissionDescription);
         }
     }
 }
