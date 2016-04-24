@@ -3,12 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/blue_A400">
+    android:background="@color/blue_A400"
+    android:paddingTop="40dp"
+    android:layout_centerHorizontal="true">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -18,26 +19,96 @@
             android:background="@color/light_blue_200">
 
             <ImageView
-                android:id="@+id/img_meshSize1"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="@drawable/android"
-                android:padding="5dp"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp"
-                android:paddingLeft="20dp"/>
-            <ImageView
-                android:id="@+id/img_meshSize2"
+                android:layout_height="200dp"
+                android:src="@drawable/meshsize_webbing_dimension"
+                />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:src="@drawable/android"
-                android:padding="5dp"/>
-            <ImageView
-                android:id="@+id/img_meshSize3"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="@drawable/android"
-                android:padding="5dp"/>
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/grey_white_1000"
+                android:layout_centerHorizontal="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_meshSize1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/mesh_size_less_than_one_finger"
+                        android:layout_weight="0.33"/>
+                    <ImageView
+                        android:id="@+id/img_meshSize2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/mesh_size_one_finger"
+                        android:layout_weight="0.33"/>
+                    <ImageView
+                        android:id="@+id/img_meshSize3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/mesh_size_two_finger"
+                        android:layout_weight="0.33"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_meshSize4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/mesh_size_three_finger"
+                        android:layout_weight="0.33"/>
+                    <ImageView
+                        android:id="@+id/img_meshSize5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/mesh_size_four_finger"
+                        android:layout_weight="0.33"/>
+                    <ImageView
+                        android:id="@+id/img_meshSize6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/mesh_size_6"
+                        android:layout_weight="0.33"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_meshSize7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/mesh_size_9"
+                        android:layout_weight="0.33"/>
+                    <ImageView
+                        android:id="@+id/img_meshSize8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/mesh_size_8"
+                        android:layout_weight="0.33"/>
+                    <ImageView
+                        android:id="@+id/img_meshSize9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/mesh_size_7"
+                        android:layout_weight="0.33"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
     </ScrollView>
