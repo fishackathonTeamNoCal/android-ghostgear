@@ -80,6 +80,12 @@ public class ReportActivity extends AppCompatActivity {
 
     }
 
+    public void moveToNextView () {
+        int cur = vpViewPager.getCurrentItem();
+        vpViewPager.setCurrentItem(cur + 1);
+        mPager.notifyDataSetChanged();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
