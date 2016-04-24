@@ -1,14 +1,12 @@
 package com.fishhackathon.ghostgear.views;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.fishhackathon.ghostgear.R;
 import com.fishhackathon.ghostgear.activity.ReportActivity;
-import com.fishhackathon.ghostgear.activity.SubmittedActivity;
 import com.fishhackathon.ghostgear.application.MyApplication;
 import com.fishhackathon.ghostgear.models.NetInput;
 import com.fishhackathon.ghostgear.network.ReportingApi;
@@ -145,14 +143,6 @@ public class MeshSize extends LinearLayout {
         final ReportActivity reportActivity = (ReportActivity) MeshSize.this.context;
 
         // To add more views, replace the rest of the code with the following        
-        // reportActivity.moveToNextView();
-
-        ReportingApi.report(reportActivity, new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                Intent i1 = new Intent(context, SubmittedActivity.class);
-                reportActivity.startActivity(i1);
-            }
-        });
+         reportActivity.moveToNextView();
     }
 }
